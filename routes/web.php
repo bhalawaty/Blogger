@@ -10,7 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+route::get('/','Postscontroller@index');
+route::get('/posts/create','Postscontroller@create');
+route::get('/posts/{post}','Postscontroller@show');
+route::post('/posts','Postscontroller@store');
+route::post('/post/{post}/comments','CommentsController@store');
