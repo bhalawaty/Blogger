@@ -9,17 +9,18 @@
 
         <div class="blog-post">
             <h2 class="blog-post-title">{{$post->title}}</h2>
-            <p class="blog-post-meta">{{$post->created_at->toFormattedDateString()}}</p>
-            <p class="blog-post-body">{{$post->body}}
-
+            <p class="blog-post-meta">{{$post->user->name}} on {{$post->created_at->toFormattedDateString()}}</p>
+            <p class="blog-post-body">{{$post->body}}</p>
+  <hr>
             <div class="comments">
                 <ul class="list-group">
 
                     @foreach($post->comments as $comment    )
                         <li class="list-group-item">
+                         {{$comment->user->name}} From
                             <strong style="font-weight: bolder;font-family:Georgia">{{$comment->created_at->diffForHumans()}}:&nbsp;</strong>
 
-                            {{$comment->body}}
+                           {{$comment->body}}
 
                         </li>
                     @endforeach

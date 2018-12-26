@@ -3,11 +3,22 @@
 namespace App\Http\Controllers;
 use App\Post;
 use App\Comment;
+use App\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
+
+
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index','show']);
+    }
+
+
     public function index()
     {
 
@@ -21,14 +32,23 @@ class PostsController extends Controller
         return view('posts.create');
 
     }
-    public function store(Request $request)
+    public function store()
     {
 
-        Post::create($request->validate([
-
+        $this->validate(request(),[
             'title'=>'required',
             'body'=>'required'
-        ]));
+        ]);
+        auth()->User()->publish( New Post (request(['title', 'body'])));
+
+
+//        Post::create([
+//
+//            'title'=>request('title'),
+//            'body'=>request('body'),
+//            'user_id'=>auth()->user()->id
+//
+//        ]);
 
         return redirect('/');
 

@@ -7,12 +7,21 @@ use Illuminate\Http\Request;
 
 class CommentsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function store(Post $post){
 
         $this->validate(request(),['body'=>'required|min:2']);
-        $post->addcomment(request('body'));
 
 
+
+        $post->Comments()->create([
+                'body'=>request('body'),
+                'user_id'=>auth()->user()->id
+            ]);
         return back();
     }
 }

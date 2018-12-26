@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use App\Post;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -27,4 +28,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function posts(){
+        return $this->hasMany(post::class);
+    }
+    public function comments(){
+        return $this->hasMany(comment::class);
+    }
+
+    public function publish(Post $post){
+        return $this->posts()->save($post);
+    }
 }
