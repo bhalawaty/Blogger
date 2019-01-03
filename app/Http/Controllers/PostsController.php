@@ -4,14 +4,11 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\Comment;
 use App\User;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
-
-
 
     public function __construct()
     {
@@ -22,7 +19,10 @@ class PostsController extends Controller
     public function index()
     {
 
-        $posts=Post::latest()->get();
+        $posts=Post::latest()
+            ->filter(request(['month','year']))
+            ->get();
+
         return view('posts.index',compact('posts'));
 
 }
@@ -42,15 +42,8 @@ class PostsController extends Controller
         auth()->User()->publish( New Post (request(['title', 'body'])));
 
 
-//        Post::create([
-//
-//            'title'=>request('title'),
-//            'body'=>request('body'),
-//            'user_id'=>auth()->user()->id
-//
-//        ]);
 
-        return redirect('/');
+       return redirect('/');
 
     }
     public function show(Post $post)
