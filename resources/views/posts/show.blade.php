@@ -17,8 +17,9 @@
 
                     @foreach($post->comments as $comment    )
                         <li class="list-group-item">
-                         {{$comment->user->name}} From
-                            <strong style="font-weight: bolder;font-family:Georgia">{{$comment->created_at->diffForHumans()}}:&nbsp;</strong>
+                            <strong style="font-weight: bolder;font-family:Georgia">
+                                <span style="color:#4aa0e6 " >{{$comment->user->name}} </span>From
+                            {{$comment->created_at->diffForHumans()}}:&nbsp;</strong>
 
                            {{$comment->body}}
 
