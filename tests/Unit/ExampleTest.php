@@ -21,9 +21,7 @@ class ExampleTest extends TestCase
 
 
         $first = factory(Post::class)->create();
-        $second = factory(Post::class)->create([
-            'created_at' => \Carbon\Carbon::now()->subMonth()
-        ]);
+        $second = factory(Post::class)->create(['created_at' => \Carbon\Carbon::now()->subMonth()]);
 
         $posts = Post::archives();
 

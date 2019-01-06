@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use App\Tag;
 
 use Carbon\Carbon;
 class Post extends Model
@@ -15,7 +15,11 @@ class Post extends Model
 
 
     public function user(){
-        return  $this->belongsTo(user::class);
+        return  $this->belongsTo(User::class);
+    }
+
+    public function tags(){
+        return  $this->belongsToMany(Tag::class);
     }
 
 

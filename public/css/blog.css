@@ -10,6 +10,12 @@ background-position: center; /* Center the image */
   border-bottom: 1px solid #e5e5e5;
 
 }
+#flash{
+  position: absolute;
+  bottom:20px;
+  right:20px;
+  z-index: 10;
+}
 
 .blog-header-logo {
   font-family: "Playfair Display", Georgia, "Times New Roman", serif;

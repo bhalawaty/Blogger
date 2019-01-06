@@ -13,6 +13,7 @@
 route::get('/','Postscontroller@index');
 route::get('/posts/create','Postscontroller@create');
 route::get('/posts/{post}','Postscontroller@show');
+route::get('/posts/tags/{tags}','Tagscontroller@index');
 route::post('/posts','Postscontroller@store');
 route::post('/post/{post}/comments','CommentsController@store');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

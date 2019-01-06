@@ -22,6 +22,8 @@ class CommentsController extends Controller
                 'body'=>request('body'),
                 'user_id'=>auth()->user()->id
             ]);
+
+        session()->flash('message','your Comment successfully published');
         return back();
     }
 }

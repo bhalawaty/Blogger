@@ -21,7 +21,7 @@
                     <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
                     <a href="#">Continue reading</a>
                 </div>
-                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap">
+
             </div>
         </div>
         <div class="col-md-6">
@@ -35,7 +35,7 @@
                     <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
                     <a href="#">Continue reading</a>
                 </div>
-                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap">
+
             </div>
         </div>
     </div>
@@ -50,6 +50,15 @@
             <div class="blog-post">
                 <a href="/posts/{{$post->id}}"><h2 class="blog-post-title">{{$post->title}}</h2></a>
                 <p class="blog-post-meta">{{$post->user->name}} on {{$post->created_at->toFormattedDateString()}}</p>
+                @if(count($post->tags))
+                    <ul>
+                        @foreach( $post->tags as $tag)
+                            <li>
+                                <a href="/posts/tags/{{$tag->name}}">#{{$tag->name}}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif
                 <p class="blog-post-body">{{$post->body}}</p>
 
             </div><!-- /.blog-main -->
